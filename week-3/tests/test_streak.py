@@ -1,0 +1,26 @@
+import sys
+import os
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
+from streak import longest_positive_streak
+
+def test_longest_positive_streak_empty():
+    assert longest_positive_streak([]) == 0
+
+def test_longest_positive_streak_multiple_streaks():
+    assert longest_positive_streak([2, 3, -1, 5, 6, 7, 0, 4]) == 3
+
+def test_longest_positive_streak_zeros_and_negatives():
+    assert longest_positive_streak([1, 0, 2, 3, -4, 5, 6]) == 2
+
+def test_longest_positive_streak_all_positive():
+    assert longest_positive_streak([1, 2, 3, 4, 5]) == 5
+
+def test_longest_positive_streak_all_non_positive():
+    assert longest_positive_streak([-1, -2, -3, 0]) == 0
+
+def test_longest_positive_streak_single_element_positive():
+    assert longest_positive_streak([5]) == 1
+
+def test_longest_positive_streak_single_element_non_positive():
+    assert longest_positive_streak([-5]) == 0
